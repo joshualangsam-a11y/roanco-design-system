@@ -1,0 +1,112 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Shadows &amp; Grain</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;overflow:hidden;background:#0B132B;color:#F4D06F;font-family:var(--font-sans);
+    -webkit-font-smoothing:antialiased}
+
+  .stage{position:relative;min-height:100vh;padding:28px 36px 22px;box-sizing:border-box}
+
+  /* top meta bar */
+  .topbar{display:flex;align-items:center;gap:16px;padding-bottom:14px;
+    border-bottom:1px solid rgba(157,180,216,.12)}
+  .num{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;color:#09FBD3;opacity:.8}
+  .title{font-family:var(--font-serif);font-size:20px;letter-spacing:-.01em;color:#F4D06F;line-height:1}
+  .title em{font-style:italic;color:#FF6FB5}
+  .spec{margin-left:auto;font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(157,180,216,.55)}
+  .spec b{color:#F4D06F;font-weight:500;margin-right:6px}
+
+  /* specimen grid */
+  .grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:24px}
+
+  .cell{background:transparent;padding:0;display:flex;flex-direction:column;gap:16px}
+
+  .head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-bottom:10px;
+    border-bottom:1px solid rgba(157,180,216,.1)}
+  .role{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#F4D06F;display:flex;align-items:center;gap:8px}
+  .role .pip{width:3px;height:3px;border-radius:50%;background:#FF2AC1;flex:0 0 3px}
+  .role .k{color:rgba(9,251,211,.7);margin-right:4px}
+  .letter{font-family:var(--font-mono);font-size:10px;color:rgba(157,180,216,.4);letter-spacing:.1em}
+
+  .demo{min-height:120px;display:flex;align-items:center;justify-content:center;padding:16px 8px}
+
+  /* 1 — card hover: soft, single diffuse shadow, the real thing a portfolio actually uses */
+  .s1 .chip{width:84%;height:80px;background:#1A1145;border:1px solid rgba(255,42,193,.14);
+    border-radius:6px;box-shadow:0 16px 32px -12px rgba(255,42,193,.22), 0 2px 0 0 rgba(255,42,193,.08)}
+
+  /* 2 — CTA press: a quiet 2px offset, very subtle */
+  .s2 .chip{width:84%;height:56px;background:transparent;border:1px solid rgba(255,42,193,.55);
+    border-radius:2px;color:#F4D06F;display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    box-shadow:3px 3px 0 0 rgba(9,251,211,.35)}
+
+  /* 3 — grain overlay: a single soft navy panel with tasteful noise */
+  .s3 .chip{width:84%;height:80px;border-radius:6px;background:#1A1145;position:relative;overflow:hidden;
+    border:1px solid rgba(157,180,216,.08)}
+  .s3 .chip::after{content:"";position:absolute;inset:0;opacity:.08;mix-blend-mode:screen;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  .meta{display:flex;flex-direction:column;gap:6px;
+    font-family:var(--font-mono);font-size:10px;color:rgba(157,180,216,.55);letter-spacing:.04em;line-height:1.5}
+  .meta .tok{color:#F4D06F;font-size:10.5px}
+  .meta .desc{color:rgba(157,180,216,.45)}
+
+  .foot{display:flex;justify-content:space-between;align-items:center;margin-top:22px;padding-top:14px;
+    border-top:1px solid rgba(157,180,216,.12);
+    font-family:var(--font-mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(157,180,216,.45)}
+  .foot em{font-style:normal;color:rgba(255,111,181,.7);font-family:var(--font-mono);font-size:9px;vertical-align:baseline}
+</style></head><body>
+<div class="stage">
+
+  <div class="topbar">
+    <span class="num">04</span>
+    <span class="title">Shadows <em>&amp;</em> Grain</span>
+    <span class="spec"><b>Policy</b>diffuse · soft offset · low-opacity noise</span>
+  </div>
+
+  <div class="grid">
+
+    <div class="cell s1">
+      <div class="head">
+        <span class="role"><span class="pip"></span><span class="k">a</span> Card · Hover</span>
+        <span class="letter">01</span>
+      </div>
+      <div class="demo"><div class="chip"></div></div>
+      <div class="meta">
+        <span class="tok">--shadow-card-hover</span>
+        <span class="desc">0 16px 32px −12px rgba(FF2AC1 / .22)</span>
+      </div>
+    </div>
+
+    <div class="cell s2">
+      <div class="head">
+        <span class="role"><span class="pip"></span><span class="k">b</span> CTA · Outline</span>
+        <span class="letter">02</span>
+      </div>
+      <div class="demo"><div class="chip">Engage</div></div>
+      <div class="meta">
+        <span class="tok">--shadow-cta</span>
+        <span class="desc">3px 3px 0 rgba(09FBD3 / .35)</span>
+      </div>
+    </div>
+
+    <div class="cell s3">
+      <div class="head">
+        <span class="role"><span class="pip"></span><span class="k">c</span> Grain · Overlay</span>
+        <span class="letter">03</span>
+      </div>
+      <div class="demo"><div class="chip"></div></div>
+      <div class="meta">
+        <span class="tok">--grain</span>
+        <span class="desc">SVG turbulence · 8% · screen</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    <span><em>§</em> 04 · Shadows &amp; Grain</span>
+    <span>used sparingly · one shadow per element · never stacked</span>
+  </div>
+
+</div>
+</body></html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Section Header</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;overflow:hidden;background:#0B132B;color:#F4D06F;font-family:var(--font-sans);
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  *{box-sizing:border-box}
+
+  .sheet{position:relative;min-height:100vh;padding:30px 48px 24px;
+    display:grid;grid-template-rows:auto auto 1fr auto;gap:0;overflow:hidden;
+    background:
+      radial-gradient(ellipse 140% 85% at 50% 112%, rgba(192,39,135,.28), transparent 60%),
+      linear-gradient(180deg,#0A0F24 0%,#0E1635 42%,#1A0B3A 78%,#2A0A3D 100%)}
+
+  .sheet::before{content:"";position:absolute;left:48px;right:48px;top:0;height:1px;background:rgba(157,180,216,.22);z-index:5}
+  .sheet::after{content:"";position:absolute;left:48px;right:48px;bottom:0;height:1px;background:rgba(157,180,216,.22);z-index:5}
+
+  /* Stars */
+  .stars{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.4;
+    background-image:
+      radial-gradient(1px 1px at 10% 18%, rgba(244,208,111,.7), transparent 60%),
+      radial-gradient(1px 1px at 28% 12%, rgba(255,255,255,.5), transparent 60%),
+      radial-gradient(1px 1px at 42% 28%, rgba(9,251,211,.5), transparent 60%),
+      radial-gradient(1px 1px at 63% 10%, rgba(255,255,255,.6), transparent 60%),
+      radial-gradient(1px 1px at 81% 22%, rgba(244,208,111,.55), transparent 60%),
+      radial-gradient(1px 1px at 92% 6%, rgba(255,255,255,.6), transparent 60%),
+      radial-gradient(1.5px 1.5px at 18% 34%, rgba(255,111,181,.4), transparent 60%),
+      radial-gradient(1px 1px at 54% 38%, rgba(255,255,255,.45), transparent 60%),
+      radial-gradient(1px 1px at 74% 32%, rgba(9,251,211,.45), transparent 60%)}
+
+  /* Horizon */
+  .horizon{position:absolute;left:0;right:0;bottom:30%;height:1px;z-index:2;
+    background:linear-gradient(90deg,transparent,rgba(244,208,111,.45) 50%,transparent)}
+
+  /* Skyline */
+  .skyline{position:absolute;left:0;right:0;bottom:0;width:100%;height:36%;z-index:1;display:block;pointer-events:none;opacity:.7}
+
+  /* Reflections on "water" below skyline */
+  .reflect{position:absolute;left:0;right:0;bottom:0;height:8%;z-index:3;pointer-events:none;
+    background:
+      linear-gradient(180deg, rgba(11,19,43,0), rgba(11,19,43,.8) 85%),
+      repeating-linear-gradient(180deg, rgba(255,111,181,.1) 0 1px, transparent 1px 5px)}
+
+  /* HEADER */
+  .head{position:relative;z-index:6;display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:baseline;padding-top:10px}
+  .mark{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;color:rgba(157,180,216,.55);text-transform:uppercase}
+  .mark b{color:#F4D06F;font-weight:500}
+  .title{font-family:var(--font-serif);font-size:16px;letter-spacing:-.005em;color:#F4D06F;line-height:1;font-style:italic;justify-self:center}
+  .colo{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:rgba(157,180,216,.45);text-transform:uppercase;text-align:right}
+  .colo b{color:#F4D06F;font-weight:500;margin-right:6px}
+
+  /* RULE ROW */
+  .rulerow{position:relative;z-index:6;display:grid;grid-template-columns:auto 1fr auto auto auto;gap:18px;align-items:center;padding:12px 0 8px;margin-top:10px;border-bottom:1px solid rgba(157,180,216,.12)}
+  .rulerow .chip{font-family:var(--font-mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(244,208,111,.85);padding:4px 10px;border:1px solid rgba(244,208,111,.3)}
+  .rulerow .bar{height:1px;background:linear-gradient(90deg, rgba(255,42,193,.5), transparent)}
+  .rulerow .meta{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(157,180,216,.5)}
+  .rulerow .meta b{color:#F4D06F;font-weight:400}
+  .rulerow .dot{width:5px;height:5px;background:#FF2AC1;display:inline-block}
+  .rulerow .live{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(9,251,211,.8)}
+  .rulerow .live .d{width:6px;height:6px;border-radius:50%;background:#09FBD3;box-shadow:0 0 8px rgba(9,251,211,.55);animation:rk-pulse 2s ease-in-out infinite}
+  @keyframes rk-pulse{0%,100%{opacity:1}50%{opacity:.55}}
+
+  /* CENTER */
+  .center{position:relative;z-index:6;display:flex;flex-direction:column;justify-content:center;padding:48px 0 0;max-width:860px}
+
+  .eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:22px;font-family:var(--font-mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#F4D06F;font-weight:500}
+  .eyebrow .num{color:#09FBD3;letter-spacing:.2em}
+  .eyebrow .vbar{width:1px;height:12px;background:rgba(255,42,193,.55)}
+  .eyebrow .sep{color:rgba(255,111,181,.8);margin:0 4px}
+  .eyebrow .lbl{color:#F4D06F}
+
+  h2{margin:0;font-family:var(--font-serif);font-weight:400;font-size:clamp(56px,9vw,108px);line-height:.94;letter-spacing:-.032em;color:#F4D06F;max-width:14ch}
+  h2 em{font-style:italic;color:#FF6FB5}
+  h2 .amp{font-style:italic;color:#F4D06F;opacity:.7;margin:0 .02em}
+
+  .sub{margin:22px 0 0;font-size:15.5px;line-height:1.65;color:#9db4d8;max-width:560px;font-weight:400}
+
+  /* Meta rail — right edge of center row */
+  .rail{position:absolute;right:0;top:14px;bottom:14px;width:220px;z-index:6;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;text-align:right;font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(157,180,216,.55);line-height:1.7}
+  .rail .k{color:rgba(9,251,211,.7);display:block;font-size:9px;margin-bottom:3px;letter-spacing:.26em}
+  .rail b{color:#F4D06F;font-weight:400}
+  .rail .stat{display:flex;flex-direction:column;gap:2px}
+  .rail .rule-v{width:40px;height:1px;background:rgba(255,42,193,.5);margin:0 0 0 auto}
+
+  /* FOOTER */
+  .foot{position:relative;z-index:6;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;padding:14px 0 8px;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(157,180,216,.55);line-height:1.5;border-top:1px solid rgba(157,180,216,.12)}
+  .foot .k{color:rgba(9,251,211,.7);display:block;font-size:9px;margin-bottom:3px;letter-spacing:.24em}
+  .foot b{color:#F4D06F;font-weight:400}
+</style></head><body>
+<div class="sheet">
+  <div class="stars"></div>
+
+  <!-- Skyline: Miami silhouette, crisp -->
+  <svg class="skyline" viewBox="0 0 1400 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="tw" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%"  stop-color="#2A0A3D" stop-opacity="1"/>
+        <stop offset="100%" stop-color="#070915" stop-opacity="1"/>
+      </linearGradient>
+      <linearGradient id="tw2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%"  stop-color="#1E0736" stop-opacity="1"/>
+        <stop offset="100%" stop-color="#070915" stop-opacity="1"/>
+      </linearGradient>
+      <pattern id="win" width="9" height="13" patternUnits="userSpaceOnUse">
+        <rect width="3" height="2" x="2" y="4" fill="#F4D06F" opacity=".22"/>
+      </pattern>
+      <pattern id="win2" width="12" height="16" patternUnits="userSpaceOnUse">
+        <rect width="2" height="2" x="3" y="5" fill="#FF6FB5" opacity=".22"/>
+      </pattern>
+    </defs>
+
+    <!-- far band -->
+    <path d="M0,210 L90,208 L90,188 L170,188 L170,205 L260,205 L260,175 L340,175 L340,198 L440,198 L440,158 L520,158 L520,180 L610,180 L610,150 L700,150 L700,170 L790,170 L790,135 L870,135 L870,160 L960,160 L960,148 L1050,148 L1050,125 L1140,125 L1140,160 L1220,160 L1220,182 L1310,182 L1310,155 L1400,155 L1400,300 L0,300 Z"
+          fill="#14062A" opacity=".92"/>
+
+    <!-- mid skyline -->
+    <g>
+      <rect x="24"  y="188" width="66" height="112" fill="url(#tw)"/><rect x="24"  y="188" width="66" height="112" fill="url(#win)"/>
+      <rect x="110" y="152" width="56" height="148" fill="url(#tw)"/><rect x="110" y="152" width="56" height="148" fill="url(#win)"/>
+      <rect x="122" y="134" width="32" height="20" fill="url(#tw2)"/><rect x="134" y="118" width="12" height="18" fill="url(#tw2)"/>
+      <rect x="182" y="200" width="50" height="100" fill="url(#tw2)"/><rect x="182" y="200" width="50" height="100" fill="url(#win2)"/>
+      <rect x="246" y="108" width="52" height="192" fill="url(#tw)"/><rect x="246" y="108" width="52" height="192" fill="url(#win)"/>
+      <rect x="262" y="92" width="20" height="18" fill="url(#tw2)"/>
+      <rect x="269" y="70" width="4" height="24" fill="#F4D06F" opacity=".7"/>
+      <rect x="314" y="160" width="46" height="140" fill="url(#tw2)"/><rect x="314" y="160" width="46" height="140" fill="url(#win2)"/>
+      <rect x="374" y="128" width="80" height="172" fill="url(#tw)"/><rect x="374" y="128" width="80" height="172" fill="url(#win)"/>
+      <rect x="394" y="104" width="42" height="26" fill="url(#tw2)"/><rect x="406" y="82" width="22" height="22" fill="url(#tw2)"/>
+      <rect x="468" y="176" width="44" height="124" fill="url(#tw2)"/><rect x="468" y="176" width="44" height="124" fill="url(#win2)"/>
+      <!-- tallest -->
+      <rect x="524" y="58" width="60" height="242" fill="url(#tw)"/><rect x="524" y="58" width="60" height="242" fill="url(#win)"/>
+      <rect x="540" y="38" width="28" height="22" fill="url(#tw2)"/>
+      <rect x="550" y="14" width="7" height="26" fill="#FF6FB5" opacity=".8"/>
+      <rect x="598" y="152" width="48" height="148" fill="url(#tw2)"/><rect x="598" y="152" width="48" height="148" fill="url(#win2)"/>
+      <rect x="660" y="118" width="62" height="182" fill="url(#tw)"/><rect x="660" y="118" width="62" height="182" fill="url(#win)"/>
+      <rect x="672" y="98" width="40" height="22" fill="url(#tw2)"/>
+      <rect x="738" y="186" width="40" height="114" fill="url(#tw2)"/><rect x="738" y="186" width="40" height="114" fill="url(#win2)"/>
+      <rect x="792" y="140" width="66" height="160" fill="url(#tw)"/><rect x="792" y="140" width="66" height="160" fill="url(#win)"/>
+      <rect x="872" y="172" width="52" height="128" fill="url(#tw2)"/><rect x="872" y="172" width="52" height="128" fill="url(#win2)"/>
+      <rect x="938" y="90" width="56" height="210" fill="url(#tw)"/><rect x="938" y="90" width="56" height="210" fill="url(#win)"/>
+      <rect x="952" y="70" width="28" height="22" fill="url(#tw2)"/>
+      <rect x="963" y="48" width="4" height="22" fill="#09FBD3" opacity=".7"/>
+      <rect x="1008" y="162" width="46" height="138" fill="url(#tw2)"/><rect x="1008" y="162" width="46" height="138" fill="url(#win2)"/>
+      <rect x="1068" y="128" width="60" height="172" fill="url(#tw)"/><rect x="1068" y="128" width="60" height="172" fill="url(#win)"/>
+      <rect x="1082" y="110" width="32" height="20" fill="url(#tw2)"/>
+      <rect x="1142" y="176" width="44" height="124" fill="url(#tw2)"/><rect x="1142" y="176" width="44" height="124" fill="url(#win2)"/>
+      <rect x="1198" y="140" width="58" height="160" fill="url(#tw)"/><rect x="1198" y="140" width="58" height="160" fill="url(#win)"/>
+      <rect x="1210" y="122" width="34" height="20" fill="url(#tw2)"/>
+      <rect x="1268" y="164" width="46" height="136" fill="url(#tw2)"/><rect x="1268" y="164" width="46" height="136" fill="url(#win2)"/>
+      <rect x="1322" y="128" width="58" height="172" fill="url(#tw)"/><rect x="1322" y="128" width="58" height="172" fill="url(#win)"/>
+    </g>
+  </svg>
+
+  <div class="horizon"></div>
+  <div class="reflect"></div>
+
+  <div class="head">
+    <span class="mark"><b>06</b> · Section Header</span>
+    <span class="title">Pattern</span>
+    <span class="colo"><b>RoanCo</b>Jupiter, FL</span>
+  </div>
+
+  <div class="rulerow">
+    <span class="chip">§ Pattern 06</span>
+    <span class="bar"></span>
+    <span class="meta">Hierarchy <b style="margin-left:8px">Eyebrow → H2 → Sub</b></span>
+    <span class="dot"></span>
+    <span class="live"><span class="d"></span>Live in 8 sections</span>
+  </div>
+
+  <div class="center">
+    <div class="eyebrow">
+      <span class="num">03 / 09</span>
+      <span class="vbar"></span>
+      <span class="lbl">Research <span class="sep">·</span> Published Work</span>
+    </div>
+
+    <h2>Published <span class="amp">&amp;</span> ongoing<br/><em>research.</em></h2>
+
+    <p class="sub">Peer-reviewed work in AI, signal processing, and multi-agent orchestration — selected for venues where the questions are worth asking, and the answers compound into the products on the next page.</p>
+
+    <!-- right rail -->
+    <div class="rail">
+      <div class="stat">
+        <span class="k">Papers</span>
+        <b style="font-family:var(--font-serif);font-size:36px;line-height:1;color:#F4D06F;letter-spacing:-.02em">07</b>
+        <span style="font-size:10px;color:rgba(157,180,216,.5)">peer-reviewed</span>
+      </div>
+      <div class="stat">
+        <span class="rule-v"></span>
+        <span class="k" style="margin-top:8px">Citations</span>
+        <b style="font-family:var(--font-serif);font-size:28px;line-height:1;color:#FF6FB5;letter-spacing:-.01em">128</b>
+      </div>
+      <div class="stat">
+        <span class="rule-v"></span>
+        <span class="k" style="margin-top:8px">Venues</span>
+        <b>NeurIPS · ICASSP</b>
+        <span style="color:rgba(157,180,216,.45);font-size:9px">IEEE SP Mag · ACL</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span><span class="k">Anatomy</span><b>Eyebrow · H2 · Sub · Rail</b></span>
+    <span><span class="k">Eyebrow</span>Mono caps · +0.32em</span>
+    <span><span class="k">Headline</span>DM Serif · −0.032em · 108px</span>
+    <span><span class="k">Backdrop</span>Skyline · horizon · reflect</span>
+    <span style="text-align:right"><span class="k">Spec</span><b>v2.4</b> · 2026.04</span>
+  </div>
+
+</div>
+</body></html>

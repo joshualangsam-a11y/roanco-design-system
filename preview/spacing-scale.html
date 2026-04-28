@@ -1,0 +1,104 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Spacing — Scale</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;overflow:hidden;background:#0B132B;color:#F4D06F;font-family:var(--font-sans)}
+
+  .stage{position:relative;min-height:100vh;padding:24px 28px 22px;box-sizing:border-box}
+
+  /* subtle single hairline top — no loud gradient */
+  .stage::before{content:"";position:absolute;left:28px;right:28px;top:0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(255,42,193,.35),transparent)}
+
+  /* Header */
+  .head{display:flex;align-items:center;gap:12px;margin-bottom:22px;padding-top:8px}
+  .num{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;color:rgba(9,251,211,.7)}
+  .hbar{width:24px;height:1px;background:rgba(255,42,193,.6)}
+  .title{font-family:var(--font-serif);font-size:26px;letter-spacing:-.02em;line-height:1;color:#F4D06F}
+  .title em{font-style:italic;color:#FF6FB5}
+  .sub{margin-left:auto;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(157,180,216,.5)}
+
+  /* rows */
+  .rows{display:grid;gap:8px}
+  .row{display:grid;grid-template-columns:90px 1fr 150px;align-items:center;gap:14px;
+    padding:7px 10px 7px 0;border-bottom:1px dashed rgba(157,180,216,.1)}
+  .row:last-child{border-bottom:none}
+
+  .key{font-family:var(--font-mono);font-size:10.5px;color:#F4D06F;letter-spacing:.08em;display:flex;align-items:center;gap:8px;opacity:.9}
+  .key .sq{width:5px;height:5px;background:rgba(255,42,193,.65);display:inline-block}
+
+  .track{position:relative;height:12px;display:flex;align-items:center}
+  .track::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;
+    background:rgba(157,180,216,.12)}
+  .bar{height:8px;position:relative;z-index:1;
+    background:#F4D06F;
+    opacity:.85;
+    border-radius:1px}
+
+  .meta{display:flex;justify-content:space-between;align-items:center;gap:8px;
+    font-family:var(--font-mono);font-size:10px;color:rgba(244,208,111,.7);letter-spacing:.04em}
+  .meta .val{color:#F4D06F}
+  .meta .use{color:rgba(157,180,216,.55);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase}
+
+  .foot{display:flex;justify-content:space-between;align-items:center;margin-top:14px;
+    font-family:var(--font-mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(157,180,216,.45)}
+  .foot em{font-style:normal;color:rgba(255,111,181,.7)}
+</style></head><body>
+<div class="stage">
+
+  <div class="head">
+    <span class="num">05</span>
+    <span class="hbar"></span>
+    <span class="title">Spacing <em>·</em> 8pt grid</span>
+    <span class="sub">base × 8</span>
+  </div>
+
+  <div class="rows">
+    <div class="row">
+      <div class="key"><span class="sq"></span>space-1</div>
+      <div class="track"><div class="bar" style="width:4px"></div></div>
+      <div class="meta"><span class="val">4px</span><span class="use">hairline</span></div>
+    </div>
+    <div class="row">
+      <div class="key"><span class="sq"></span>space-2</div>
+      <div class="track"><div class="bar" style="width:8px"></div></div>
+      <div class="meta"><span class="val">8px</span><span class="use">inline gap</span></div>
+    </div>
+    <div class="row">
+      <div class="key"><span class="sq"></span>space-4</div>
+      <div class="track"><div class="bar" style="width:16px"></div></div>
+      <div class="meta"><span class="val">16px</span><span class="use">card inset</span></div>
+    </div>
+    <div class="row">
+      <div class="key"><span class="sq"></span>space-6</div>
+      <div class="track"><div class="bar" style="width:24px"></div></div>
+      <div class="meta"><span class="val">24px</span><span class="use">px-6 · mobile</span></div>
+    </div>
+    <div class="row">
+      <div class="key"><span class="sq"></span>space-8</div>
+      <div class="track"><div class="bar" style="width:32px"></div></div>
+      <div class="meta"><span class="val">32px</span><span class="use">card-pad</span></div>
+    </div>
+    <div class="row">
+      <div class="key"><span class="sq"></span>space-16</div>
+      <div class="track"><div class="bar" style="width:64px"></div></div>
+      <div class="meta"><span class="val">64px</span><span class="use">md gutter</span></div>
+    </div>
+    <div class="row">
+      <div class="key"><span class="sq"></span>space-24</div>
+      <div class="track"><div class="bar" style="width:96px"></div></div>
+      <div class="meta"><span class="val">96px</span><span class="use">lg gutter</span></div>
+    </div>
+    <div class="row">
+      <div class="key"><span class="sq"></span>space-36</div>
+      <div class="track"><div class="bar" style="width:144px"></div></div>
+      <div class="meta"><span class="val">144px</span><span class="use">section</span></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span><em>§</em> 05 · Spacing</span>
+    <span>8pt base · calm gold bars on navy</span>
+  </div>
+
+</div>
+</body></html>

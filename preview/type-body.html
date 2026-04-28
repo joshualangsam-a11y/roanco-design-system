@@ -1,0 +1,105 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Type — Body &amp; UI</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;overflow:hidden;background:#0B132B;font-family:var(--font-sans);
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    font-feature-settings:"ss01","ss02","cv11","kern"}
+
+  /* Cream panel — warm off-white, sits inside a navy frame like a printed
+     type specimen sheet.  This is the "cream" the user asked for. */
+  .frame{min-height:100vh;box-sizing:border-box;padding:22px;background:#0B132B;display:grid;grid-template-rows:1fr}
+
+  .sheet{position:relative;min-height:100%;box-sizing:border-box;padding:36px 44px 28px;
+    background:#F3EBD8;               /* cream */
+    color:#2A1A3E;
+    display:grid;grid-template-rows:auto 1fr auto;gap:0;
+    box-shadow:0 2px 0 0 rgba(255,42,193,.25), 0 10px 28px -12px rgba(0,0,0,.55)}
+
+  /* warm deckle edges */
+  .sheet::before{content:"";position:absolute;left:44px;right:44px;top:0;height:1px;background:#2A1A3E;opacity:.18}
+  .sheet::after{content:"";position:absolute;left:44px;right:44px;bottom:0;height:1px;background:#2A1A3E;opacity:.18}
+
+  /* HEADER */
+  .head{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:baseline;padding-top:12px}
+  .mark{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;color:rgba(42,26,62,.55);text-transform:uppercase}
+  .mark b{color:#2A1A3E;font-weight:500}
+  .title{font-family:var(--font-serif);font-size:16px;letter-spacing:-.005em;color:#2A1A3E;line-height:1;font-style:italic;justify-self:center}
+  .colophon{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:rgba(42,26,62,.5);text-transform:uppercase;text-align:right}
+  .colophon b{color:#2A1A3E;font-weight:500;margin-right:6px}
+
+  /* SPECIMEN */
+  .body{display:grid;grid-template-columns:110px 1fr 110px;column-gap:32px;align-items:baseline;padding:22px 0 12px}
+  .row{display:contents}
+  .row > *{padding:16px 0;border-bottom:1px solid rgba(42,26,62,.1)}
+  .row.last > *{border-bottom:none}
+
+  .role{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.18em;color:#2A1A3E;text-transform:uppercase;display:flex;align-items:baseline;gap:8px;padding-top:22px !important}
+  .role .k{color:rgba(42,26,62,.4);font-weight:400;width:14px;display:inline-block}
+
+  .specimen{color:#2A1A3E}
+  .meas{font-family:var(--font-mono);font-size:10px;color:rgba(42,26,62,.5);letter-spacing:.06em;text-align:right;padding-top:22px !important;line-height:1.55}
+  .meas b{color:#2A1A3E;font-weight:400;display:block}
+
+  .s-lede{font-size:24px;line-height:1.4;letter-spacing:-.015em;color:#2A1A3E;font-weight:400}
+  .s-body{font-size:16px;line-height:1.65;letter-spacing:-.005em;color:rgba(42,26,62,.78);font-weight:400}
+  .s-card{font-size:14px;line-height:1.6;letter-spacing:0;color:rgba(42,26,62,.72);font-weight:400}
+  .s-cap{font-size:11px;line-height:1.5;letter-spacing:.04em;color:rgba(42,26,62,.6);font-weight:400}
+
+  em{font-style:italic;font-family:var(--font-serif);font-weight:400;letter-spacing:-.01em;font-size:1.05em;color:#2A1A3E;vertical-align:-.02em}
+
+  /* single magenta accent — restrained */
+  .hi{color:#C41E87;font-weight:500}
+
+  /* FOOTER */
+  .foot{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:14px 0 8px;
+    font-family:var(--font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(42,26,62,.55);line-height:1.5}
+  .foot .k{color:#C41E87;display:block;font-size:9px;margin-bottom:3px;letter-spacing:.2em;opacity:.8}
+  .foot b{color:#2A1A3E;font-weight:400}
+</style></head><body>
+<div class="frame">
+<div class="sheet">
+
+  <div class="head">
+    <span class="mark"><b>02b</b> · Body &amp; UI</span>
+    <span class="title">Type specimen</span>
+    <span class="colophon"><b>RoanCo</b>Jupiter, FL</span>
+  </div>
+
+  <div class="body">
+
+    <div class="row">
+      <div class="role"><span class="k">a</span>Lede</div>
+      <div class="specimen s-lede">I ship AI systems for industries that <em>still run on spreadsheets.</em></div>
+      <div class="meas"><b>24 / 1.40</b>−0.015em</div>
+    </div>
+
+    <div class="row">
+      <div class="role"><span class="k">b</span>Body</div>
+      <div class="specimen s-body">I'm 21. I've shipped <span class="hi">15 products</span> across legal tech, SaaS, fintech, and AI infrastructure — breaking them, then fixing them before anyone noticed.</div>
+      <div class="meas"><b>16 / 1.65</b>−0.005em</div>
+    </div>
+
+    <div class="row">
+      <div class="role"><span class="k">c</span>Card</div>
+      <div class="specimen s-card">AI case management for PI law firms. Document analysis, demand letters, medical record parsing.</div>
+      <div class="meas"><b>14 / 1.60</b>0em</div>
+    </div>
+
+    <div class="row last">
+      <div class="role"><span class="k">d</span>Caption</div>
+      <div class="specimen s-cap">Built in Jupiter, FL &nbsp;·&nbsp; RoanCo © 2026 &nbsp;·&nbsp; 25.7617°N · 80.1918°W</div>
+      <div class="meas"><b>11 / 1.50</b>+0.04em</div>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    <span><span class="k">Sans</span><b>Geist</b> · 400–500</span>
+    <span><span class="k">Italic</span><b>DM Serif Display</b></span>
+    <span><span class="k">Tracking</span>−0.015 to +0.04em</span>
+    <span><span class="k">Scale</span>4-step · 11 → 24</span>
+  </div>
+
+</div>
+</div>
+</body></html>

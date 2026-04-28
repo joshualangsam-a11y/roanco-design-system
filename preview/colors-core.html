@@ -1,0 +1,114 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Colors — Core</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:#0a0a0a;color:var(--text);font-family:var(--font-sans);overflow:hidden}
+  .stage{position:relative;height:100vh;min-height:300px;display:grid;
+    grid-template-columns:1.1fr 1fr 1fr 1fr}
+
+  /* grain */
+  .stage::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  /* horizon glow on bg cell */
+  .bg-cell::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse 90% 55% at 50% 108%, rgba(232,115,90,.18), transparent 70%)}
+
+  .cell{position:relative;padding:22px 22px 20px;display:flex;flex-direction:column;justify-content:space-between;
+    border-right:1px solid rgba(255,255,255,.06);overflow:hidden;cursor:crosshair}
+  .cell:last-child{border-right:none}
+
+  /* individual backgrounds */
+  .bg-cell      { background:#0a0a0a }
+  .elev-cell    { background:#141414 }
+  .text-cell    { background:#ededed; color:#0a0a0a }
+  .muted-cell   { background:#1a1a1a }
+
+  /* upper label cluster */
+  .tag{display:flex;align-items:center;gap:10px}
+  .tag .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(232,115,90,.12)}
+  .tag .role{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.35);font-weight:500}
+  .text-cell .tag .role{color:rgba(10,10,10,.45)}
+
+  .name{margin-top:10px;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;color:rgba(255,255,255,.92)}
+  .text-cell .name{color:rgba(10,10,10,.9)}
+
+  /* big hex */
+  .hex{font-family:var(--font-serif);font-weight:400;
+    font-size:clamp(30px,4.4vw,56px);line-height:1;letter-spacing:-.035em;
+    color:#fff}
+  .text-cell .hex{color:#0a0a0a}
+  .elev-cell .hex,.muted-cell .hex{color:#fff}
+  /* the signature accent mark on the leading cell */
+  .bg-cell .hex em{font-style:normal;color:var(--accent)}
+
+  /* meta row */
+  .meta{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;
+    font-family:var(--font-mono);font-size:9.5px;color:rgba(255,255,255,.38);letter-spacing:.06em}
+  .text-cell .meta{color:rgba(10,10,10,.5)}
+  .meta .use{text-transform:uppercase;letter-spacing:.24em;font-family:var(--font-sans);font-size:9px;color:rgba(255,255,255,.45)}
+  .text-cell .meta .use{color:rgba(10,10,10,.55)}
+
+  /* hairline divider on bg cell emphasising the horizon */
+  .bg-cell .h{position:absolute;left:0;right:0;bottom:38%;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(232,115,90,.55),transparent);opacity:.5}
+
+  /* tiny sample chips in right-most cells */
+  .chips{display:flex;gap:4px;margin-top:6px}
+  .chip{height:4px;flex:1;border-radius:2px}
+  .muted-cell .chip{background:rgba(136,136,136,.9)}
+  .muted-cell .chip:nth-child(2){background:rgba(136,136,136,.55)}
+  .muted-cell .chip:nth-child(3){background:rgba(136,136,136,.3)}
+
+  /* lead cell emphasized */
+  .bg-cell{flex:1.1}
+  .bg-cell .hex{font-size:clamp(40px,5.4vw,72px)}
+</style></head><body>
+<div class="stage">
+
+  <div class="cell bg-cell">
+    <div>
+      <div class="tag"><span class="dot"></span><span class="role">Page · Canvas</span></div>
+      <div class="name">--bg</div>
+    </div>
+    <div class="h"></div>
+    <div>
+      <div class="hex">#0A<em>0A</em>0A</div>
+      <div class="meta"><span>rgb 10 10 10</span><span class="use">oklch .15 0 0</span></div>
+    </div>
+  </div>
+
+  <div class="cell elev-cell">
+    <div>
+      <div class="tag"><span class="dot" style="background:#ededed;box-shadow:0 0 0 4px rgba(237,237,237,.1)"></span><span class="role">Card · Menu</span></div>
+      <div class="name">--bg-elevated</div>
+    </div>
+    <div>
+      <div class="hex">#141414</div>
+      <div class="meta"><span>rgb 20 20 20</span><span class="use">+4 L over bg</span></div>
+    </div>
+  </div>
+
+  <div class="cell text-cell">
+    <div>
+      <div class="tag"><span class="dot" style="background:#0a0a0a;box-shadow:0 0 0 4px rgba(10,10,10,.08)"></span><span class="role">Primary · Near-white</span></div>
+      <div class="name">--text</div>
+    </div>
+    <div>
+      <div class="hex">#EDEDED</div>
+      <div class="meta"><span>rgb 237 237 237</span><span class="use">Aa 18.2:1</span></div>
+    </div>
+  </div>
+
+  <div class="cell muted-cell">
+    <div>
+      <div class="tag"><span class="dot" style="background:#888;box-shadow:0 0 0 4px rgba(136,136,136,.18)"></span><span class="role">Body · Meta</span></div>
+      <div class="name">--text-muted</div>
+      <div class="chips"><span class="chip"></span><span class="chip"></span><span class="chip"></span></div>
+    </div>
+    <div>
+      <div class="hex" style="color:#888">#888888</div>
+      <div class="meta"><span>rgb 136 136 136</span><span class="use">Aa 4.9:1</span></div>
+    </div>
+  </div>
+
+</div>
+</body></html>

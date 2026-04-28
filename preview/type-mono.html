@@ -1,0 +1,22 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Type — Mono & Labels</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{background:var(--bg);color:var(--text);font-family:var(--font-sans);margin:0}
+  .wrap{padding:20px 28px;display:grid;gap:14px}
+  .row{display:flex;align-items:center;gap:14px}
+  .key{font-family:var(--font-mono);font-size:9px;color:var(--text-muted);letter-spacing:.08em;width:80px;flex-shrink:0}
+  .eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.3em;color:var(--accent);font-weight:500}
+  .eyebrow .n{font-family:var(--font-mono);color:rgba(232,115,90,.30);margin-right:8px}
+  .cta{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);font-weight:500}
+  .mono{font-family:var(--font-mono);font-size:12px;color:var(--accent-60)}
+  .doi{font-family:var(--font-mono);font-size:11px;color:var(--accent-30)}
+  .counter{font-family:var(--font-mono);font-size:36px;color:var(--text);letter-spacing:-.04em}
+</style></head><body>
+<div class="wrap">
+  <div class="row"><div class="key">eyebrow</div><div class="eyebrow"><span class="n">01</span>Selected Work</div></div>
+  <div class="row"><div class="key">cta label</div><div class="cta">Get in touch</div></div>
+  <div class="row"><div class="key">metric</div><div class="mono">469 tests passing</div></div>
+  <div class="row"><div class="key">doi</div><div class="doi">DOI: zenodo.15179553</div></div>
+  <div class="row"><div class="key">counter</div><div class="counter">047</div></div>
+</div>
+</body></html>

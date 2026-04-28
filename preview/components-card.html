@@ -1,0 +1,56 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Card</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;overflow:hidden;font-family:var(--font-sans);
+    background:linear-gradient(180deg,#0B132B 0%,#1E0A36 28%,#3A0C52 50%,#7A1A66 72%,#B24A5A 88%,#C97A4E 100%);color:#E8D9A8}
+  .stage{position:relative;height:100vh;min-height:400px;padding:28px 32px;display:flex;align-items:center;justify-content:center;gap:28px;z-index:1}
+  .stage::before{content:"";position:absolute;left:0;right:0;bottom:0;height:38%;z-index:-1;pointer-events:none;opacity:.75;
+    background:linear-gradient(180deg,transparent 0,transparent 62%,rgba(200,80,150,.35) 62%,rgba(200,80,150,.35) 62.2%,transparent 62.2%,transparent 74%,rgba(200,80,150,.45) 74%,rgba(200,80,150,.45) 74.25%,transparent 74.25%,transparent 86%,rgba(200,80,150,.55) 86%,rgba(200,80,150,.55) 86.3%,transparent 86.3%,transparent 95%,rgba(200,80,150,.65) 95%,rgba(200,80,150,.65) 95.5%,transparent 95.5%),
+      radial-gradient(ellipse 160% 100% at 50% 0%,rgba(11,19,43,.9) 30%,rgba(11,19,43,.5) 70%,transparent 100%)}
+
+  .card{position:relative;background:#0B132B;border:1px solid transparent;border-radius:2px;padding:34px 36px;max-width:500px;width:100%;
+    background:linear-gradient(#0B132B,#0B132B) padding-box,
+      linear-gradient(135deg,#C94A9E 0%,#D97A4E 50%,#CBB06B 100%) border-box;
+    box-shadow:8px 8px 0 0 #3DA9A3, 14px 14px 0 0 #1E0A36;
+    transition:transform 420ms cubic-bezier(.25,.1,.25,1), box-shadow 420ms cubic-bezier(.25,.1,.25,1);cursor:pointer}
+  .card:hover{transform:translate(-4px,-4px);box-shadow:12px 12px 0 0 #3DA9A3,20px 20px 0 0 #1E0A36}
+
+  .dash{height:3px;width:72px;background:linear-gradient(90deg,#C94A9E,#D97A4E,#CBB06B);margin-bottom:24px;transition:width 500ms ease}
+  .card:hover .dash{width:140px}
+
+  .head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .cat{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.28em;color:#3DA9A3}
+  .num{font-family:var(--font-mono);font-size:10px;color:#D886A8;letter-spacing:.1em}
+
+  h3{font-family:var(--font-serif);font-weight:400;font-size:34px;margin:0 0 10px;letter-spacing:-.02em;line-height:1.05;
+    background:linear-gradient(135deg,#C94A9E 0%,#D97A4E 50%,#CBB06B 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+
+  p{font-size:13.5px;line-height:1.65;color:#8CA3C4;margin:0 0 20px;max-width:420px}
+
+  .tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px}
+  .tag{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#CBB06B;border:1px solid rgba(203,176,107,.28);padding:4px 10px;border-radius:2px}
+
+  .foot{padding-top:18px;border-top:1px solid rgba(201,74,158,.28);display:flex;justify-content:space-between;align-items:center}
+  .metric{font-family:var(--font-mono);font-size:11px;color:#3DA9A3;letter-spacing:.08em}
+  .arrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C94A9E}
+</style></head><body>
+<div class="stage">
+  <div class="card">
+    <div class="dash"></div>
+    <div class="head"><span class="cat">Legal Tech</span><span class="num">— 01</span></div>
+    <h3>Litigation Juris</h3>
+    <p>AI case management for PI law firms. Document analysis, demand letter generation, medical record parsing.</p>
+    <div class="tags">
+      <span class="tag">Elixir</span><span class="tag">Phoenix</span>
+      <span class="tag">Claude API</span><span class="tag">PostgreSQL</span>
+    </div>
+    <div class="foot">
+      <span class="metric">469 tests passing</span>
+      <span class="arrow">Case study
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="1.5"/></svg>
+      </span>
+    </div>
+  </div>
+</div>
+</body></html>

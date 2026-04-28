@@ -1,0 +1,187 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Iconography</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;overflow:hidden;font-family:var(--font-sans);
+    background:linear-gradient(180deg,#0B132B 0%,#1E0A36 28%,#3A0C52 50%,#7A1A66 72%,#B24A5A 88%,#C97A4E 100%);color:#E8D9A8}
+  .stage{position:relative;height:100vh;min-height:360px;padding:24px 28px;display:flex;flex-direction:column;gap:18px;z-index:1}
+  .stage::before{content:"";position:absolute;left:0;right:0;bottom:0;height:38%;z-index:-1;pointer-events:none;opacity:.75;
+    background:linear-gradient(180deg,transparent 0,transparent 62%,rgba(200,80,150,.35) 62%,rgba(200,80,150,.35) 62.2%,transparent 62.2%,transparent 74%,rgba(200,80,150,.45) 74%,rgba(200,80,150,.45) 74.25%,transparent 74.25%,transparent 86%,rgba(200,80,150,.55) 86%,rgba(200,80,150,.55) 86.3%,transparent 86.3%,transparent 95%,rgba(200,80,150,.65) 95%,rgba(200,80,150,.65) 95.5%,transparent 95.5%),
+      radial-gradient(ellipse 160% 100% at 50% 0%,rgba(11,19,43,.9) 30%,rgba(11,19,43,.5) 70%,transparent 100%)}
+
+  .head{display:flex;align-items:baseline;gap:14px}
+  .num{font-family:var(--font-mono);font-size:10px;letter-spacing:.25em;color:#3DA9A3}
+  .title{font-family:var(--font-serif);font-size:28px;letter-spacing:-.02em;line-height:1;
+    background:linear-gradient(135deg,#C94A9E 0%,#D97A4E 50%,#CBB06B 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+  .sub{margin-left:auto;font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(203,176,107,.55)}
+
+  .grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;flex:1;min-height:0}
+  .cell{background:#0B132B;border:1px solid rgba(201,74,158,.32);border-radius:2px;padding:14px 10px;
+    display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:6px;position:relative;
+    transition:transform .35s,border-color .35s;cursor:pointer;
+    box-shadow:inset 0 -12px 0 -8px rgba(61,169,163,.18)}
+  .cell:hover{transform:translate(-3px,-3px);border-color:#3DA9A3;box-shadow:4px 4px 0 0 #C94A9E}
+  .cell .letter{position:absolute;top:6px;left:8px;font-family:var(--font-mono);font-size:8.5px;color:#D886A8;letter-spacing:.08em}
+  .cell .ver{position:absolute;top:6px;right:8px;font-family:var(--font-mono);font-size:8px;color:rgba(61,169,163,.55);letter-spacing:.04em}
+  .ico{flex:1;display:flex;align-items:center;justify-content:center;width:100%;padding:4px 0}
+  .ico svg{width:28px;height:28px;color:#3DA9A3;overflow:visible}
+  .name{font-family:var(--font-mono);font-size:9.5px;color:#CBB06B;letter-spacing:.04em}
+  .use{font-size:8.5px;color:rgba(203,176,107,.55);text-transform:uppercase;letter-spacing:.22em;text-align:center}
+
+  .g .ico svg{color:transparent;stroke:url(#sunset);fill:none}
+
+  .foot{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.12em;color:rgba(203,176,107,.55);text-transform:uppercase}
+  .foot em{font-style:normal;color:#3DA9A3}
+</style></head><body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="sunset" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#C94A9E"/>
+      <stop offset=".5" stop-color="#D97A4E"/>
+      <stop offset="1" stop-color="#CBB06B"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div class="stage">
+
+  <div class="head">
+    <span class="num">05</span>
+    <span class="title">Iconography</span>
+    <span class="sub">28×28 · retro-futurist · 2px · geometric</span>
+  </div>
+
+  <div class="grid">
+
+    <!-- a — arrow-down · dashed shaft, hollow wedge -->
+    <div class="cell"><span class="letter">a</span><span class="ver">v2</span>
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none">
+        <path d="M12 3v14" stroke="currentColor" stroke-width="2" stroke-dasharray="2 2"/>
+        <path d="M5 14l7 7 7-7" stroke="currentColor" stroke-width="2" stroke-linejoin="miter"/>
+        <circle cx="12" cy="3" r="1.5" fill="currentColor"/>
+      </svg></div>
+      <div class="name">arrow-down</div><div class="use">View work</div></div>
+
+    <!-- b — arrow-out · sunset gradient, double shaft -->
+    <div class="cell g"><span class="letter">b</span><span class="ver">grad</span>
+      <div class="ico"><svg viewBox="0 0 24 24">
+        <path d="M7 17L17 7" stroke-width="2" stroke-linecap="square"/>
+        <path d="M9 7h8v8" stroke-width="2" stroke-linejoin="miter"/>
+        <path d="M4 20L14 10" stroke-width="1" stroke-dasharray="1 2" opacity=".6"/>
+      </svg></div>
+      <div class="name">arrow-out</div><div class="use">External</div></div>
+
+    <!-- c — chevron stack (retro speedmark) -->
+    <div class="cell"><span class="letter">c</span><span class="ver">v2</span>
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none">
+        <path d="M4 8l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linejoin="miter" opacity=".35"/>
+        <path d="M4 12l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linejoin="miter" opacity=".65"/>
+        <path d="M4 16l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linejoin="miter"/>
+      </svg></div>
+      <div class="name">speed-chevron</div><div class="use">Scroll cue</div></div>
+
+    <!-- d — menu (deco, 3 bars + dots) -->
+    <div class="cell"><span class="letter">d</span><span class="ver">v2</span>
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none">
+        <path d="M3 6h18M3 12h14M3 18h10" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+        <circle cx="21" cy="12" r="1.3" fill="currentColor"/>
+        <circle cx="21" cy="18" r="1.3" fill="currentColor" opacity=".5"/>
+      </svg></div>
+      <div class="name">menu</div><div class="use">Nav · mobile</div></div>
+
+    <!-- e — close (cross + dots at tips) -->
+    <div class="cell"><span class="letter">e</span><span class="ver">v2</span>
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none">
+        <path d="M5 5l14 14M19 5l-14 14" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+        <circle cx="5" cy="5" r="1.2" fill="currentColor"/>
+        <circle cx="19" cy="19" r="1.2" fill="currentColor"/>
+        <circle cx="19" cy="5" r="1.2" fill="currentColor" opacity=".5"/>
+        <circle cx="5" cy="19" r="1.2" fill="currentColor" opacity=".5"/>
+      </svg></div>
+      <div class="name">close</div><div class="use">Dismiss</div></div>
+
+    <!-- f — section-num (tall deco numeral with tick) -->
+    <div class="cell g"><span class="letter">f</span><span class="ver">grad</span>
+      <div class="ico"><svg viewBox="0 0 24 24">
+        <text x="12" y="20" text-anchor="middle" font-family="'DM Serif Display',serif" font-size="22" fill="url(#sunset)" letter-spacing="-1">01</text>
+        <path d="M5 22h14" stroke-width="1.2"/>
+      </svg></div>
+      <div class="name">section-num</div><div class="use">Nav intro</div></div>
+
+    <!-- g — accent-dash (3-stop stripe with tick) -->
+    <div class="cell g"><span class="letter">g</span><span class="ver">grad</span>
+      <div class="ico"><svg viewBox="0 0 28 24" preserveAspectRatio="xMidYMid meet">
+        <rect x="2" y="10" width="24" height="4" fill="url(#sunset)" stroke="none"/>
+        <path d="M2 16v2M14 16v3M26 16v2" stroke-width="1"/>
+      </svg></div>
+      <div class="name">accent-dash</div><div class="use">Card tops</div></div>
+
+    <!-- h — palette-dots (3 circles + rail) -->
+    <div class="cell"><span class="letter">h</span><span class="ver">v2</span>
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none">
+        <path d="M3 12h18" stroke="#CBB06B" stroke-width="1"/>
+        <circle cx="6" cy="12" r="3.5" fill="#C94A9E"/>
+        <circle cx="12" cy="12" r="3.5" fill="#D97A4E"/>
+        <circle cx="18" cy="12" r="3.5" fill="#3DA9A3"/>
+        <circle cx="6" cy="12" r="1" fill="#0B132B"/>
+        <circle cx="12" cy="12" r="1" fill="#0B132B"/>
+        <circle cx="18" cy="12" r="1" fill="#0B132B"/>
+      </svg></div>
+      <div class="name">palette-dots</div><div class="use">Status rail</div></div>
+
+    <!-- i — corner-tick (L-mark with accent dot) -->
+    <div class="cell"><span class="letter">i</span><span class="ver">v2</span>
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none">
+        <path d="M4 4h8M4 4v8" stroke="currentColor" stroke-width="2" stroke-linecap="square"/>
+        <path d="M20 20h-4M20 20v-4" stroke="currentColor" stroke-width="2" stroke-linecap="square" opacity=".45"/>
+        <circle cx="4" cy="4" r="1.5" fill="#C94A9E"/>
+      </svg></div>
+      <div class="name">crop-mark</div><div class="use">Hero frame</div></div>
+
+    <!-- j — retro-sun (banded half-circle + horizon) -->
+    <div class="cell g"><span class="letter">j</span><span class="ver">grad</span>
+      <div class="ico"><svg viewBox="0 0 28 20" preserveAspectRatio="xMidYMid meet">
+        <clipPath id="sunclip"><path d="M2 14 A12 12 0 0 1 26 14 L26 14 L2 14 Z"/></clipPath>
+        <g clip-path="url(#sunclip)">
+          <rect x="0" y="0" width="28" height="20" fill="url(#sunset)" stroke="none"/>
+          <rect x="0" y="7"  width="28" height="1" fill="#0B132B" stroke="none"/>
+          <rect x="0" y="10" width="28" height="1" fill="#0B132B" stroke="none"/>
+          <rect x="0" y="12" width="28" height=".8" fill="#0B132B" stroke="none"/>
+        </g>
+        <path d="M0 14h28" stroke="#3DA9A3" stroke-width="1"/>
+      </svg></div>
+      <div class="name">retro-sun</div><div class="use">Feature · hero</div></div>
+
+    <!-- k — palm (tall geometric) -->
+    <div class="cell"><span class="letter">k</span><span class="ver">v2</span>
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none">
+        <path d="M12 8v14" stroke="#CBB06B" stroke-width="2" stroke-linecap="square"/>
+        <path d="M12 8 Q6 6 2 9" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M12 8 Q18 6 22 9" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M12 8 Q8 3 4 3" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M12 8 Q16 3 20 3" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M12 8 Q12 4 12 2" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="12" cy="8" r="1.2" fill="#C94A9E"/>
+      </svg></div>
+      <div class="name">palm</div><div class="use">Jupiter · locale</div></div>
+
+    <!-- l — orbit (futurist planet + ring) -->
+    <div class="cell g"><span class="letter">l</span><span class="ver">grad</span>
+      <div class="ico"><svg viewBox="0 0 24 24">
+        <ellipse cx="12" cy="12" rx="10" ry="3.5" stroke-width="1.5"/>
+        <circle cx="12" cy="12" r="4.5" stroke-width="2" fill="#0B132B"/>
+        <circle cx="12" cy="12" r="4.5" stroke-width="2" fill="none"/>
+        <circle cx="3" cy="12" r="1.3" fill="#3DA9A3" stroke="none"/>
+      </svg></div>
+      <div class="name">orbit</div><div class="use">System · research</div></div>
+
+  </div>
+
+  <div class="foot">
+    <span>28px · 2px · <em>cyan default</em> · sunset-grad on feature set · dot terminals</span>
+    <span>retro-futurist · miami · vice</span>
+  </div>
+
+</div>
+</body></html>

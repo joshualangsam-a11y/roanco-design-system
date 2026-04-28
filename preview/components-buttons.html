@@ -1,0 +1,140 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Buttons</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:#0B132B;color:#F4D06F;font-family:var(--font-sans);overflow:hidden}
+
+  .stage{padding:30px 34px;display:grid;grid-template-columns:1.1fr 1fr;gap:28px;min-height:100vh;box-sizing:border-box}
+
+  /* ---------- HEAD ---------- */
+  .head{grid-column:1 / -1;display:flex;align-items:baseline;gap:14px;border-bottom:1px solid rgba(255,111,181,.14);padding-bottom:18px}
+  .head .num{font-family:var(--font-mono);font-size:10px;letter-spacing:.25em;color:#FF2AC1}
+  .head .title{font-family:var(--font-serif);font-size:32px;letter-spacing:-.02em;line-height:1}
+  .head .sub{margin-left:auto;font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,208,111,.5)}
+
+  /* ---------- shared button anatomy ---------- */
+  .row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .stack{display:flex;flex-direction:column;gap:10px}
+  .lab{font-family:var(--font-mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(244,208,111,.5)}
+  .divlab{display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(244,208,111,.65);margin-bottom:10px}
+  .divlab .k{color:#FF2AC1}
+  .divlab hr{flex:1;border:0;border-top:1px solid rgba(255,111,181,.14);margin:0 4px}
+
+  /* Primary — magenta fill, navy label. Single accent. No shadow, no glow. */
+  .btn{display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--font-sans);font-weight:500;font-size:13px;
+    letter-spacing:.14em;text-transform:uppercase;
+    padding:16px 28px;border-radius:2px;border:1px solid transparent;
+    cursor:pointer;background:transparent;color:inherit;
+    transition:transform 420ms cubic-bezier(.2,.7,.2,1), background 420ms ease, color 420ms ease, border-color 420ms ease, padding 420ms cubic-bezier(.2,.7,.2,1)}
+  .btn .arrow{display:inline-block;transition:transform 420ms cubic-bezier(.2,.7,.2,1)}
+  .btn:hover .arrow{transform:translateX(6px)}
+  .btn:active{transform:translateY(1px)}
+
+  .primary{background:#FF2AC1;color:#0B132B;border-color:#FF2AC1}
+  .primary:hover{padding-left:36px;padding-right:36px}
+  .primary.press{background:#C81E95;border-color:#C81E95;transform:translateY(1px)}
+  .primary.dis{background:rgba(255,42,193,.25);color:rgba(11,19,43,.55);border-color:transparent;cursor:not-allowed}
+
+  .ghost{color:#F4D06F;border-color:rgba(244,208,111,.35)}
+  .ghost:hover{color:#FF2AC1;border-color:#FF2AC1}
+  .ghost.press{color:#C81E95;border-color:#C81E95}
+  .ghost.dis{color:rgba(244,208,111,.3);border-color:rgba(244,208,111,.1);cursor:not-allowed}
+
+  /* Link — typography, underline-origin */
+  .link{display:inline-flex;align-items:baseline;gap:8px;
+    font-family:var(--font-sans);font-weight:500;font-size:14px;letter-spacing:.04em;
+    color:#FF2AC1;text-decoration:none;cursor:pointer;position:relative;padding-bottom:2px}
+  .link::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform-origin:left;transform:scaleX(1);transition:transform 520ms cubic-bezier(.2,.7,.2,1)}
+  .link:hover::after{transform:scaleX(0);transform-origin:right}
+
+  /* Size variants */
+  .sm{font-size:11px;padding:11px 20px;letter-spacing:.16em}
+  .md{font-size:13px;padding:16px 28px}
+  .lg{font-size:15px;padding:20px 36px;letter-spacing:.12em}
+
+  /* Specimen block */
+  .block{display:flex;flex-direction:column;gap:18px}
+  .kv{display:flex;gap:10px;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;color:rgba(244,208,111,.45)}
+  .kv b{color:#F4D06F;font-weight:400}
+
+  /* Hero feature — oversized button as editorial statement */
+  .feature{grid-column:1 / -1;border-top:1px solid rgba(255,111,181,.14);padding-top:22px;
+    display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center}
+  .feature .oversized{
+    font-family:var(--font-serif);font-weight:400;font-size:42px;letter-spacing:-.01em;text-transform:none;
+    padding:22px 40px 26px;color:#0B132B;background:#FF2AC1;border:1px solid #FF2AC1;border-radius:2px;line-height:1;
+    display:inline-flex;align-items:baseline;gap:18px;cursor:pointer;
+    transition:padding 500ms cubic-bezier(.2,.7,.2,1), background 500ms ease}
+  .feature .oversized .chev{font-family:var(--font-sans);font-size:26px;line-height:1;transition:transform 500ms cubic-bezier(.2,.7,.2,1)}
+  .feature .oversized:hover{padding-left:56px;padding-right:56px}
+  .feature .oversized:hover .chev{transform:translateX(10px)}
+  .feature .oversized:active{background:#C81E95;border-color:#C81E95}
+  .feature .notes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;font-family:var(--font-mono);font-size:10px;letter-spacing:.05em;color:rgba(244,208,111,.5)}
+  .feature .notes .n b{display:block;color:#F4D06F;font-family:var(--font-sans);font-weight:500;font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:4px}
+
+  .arrow-sm{font-size:.9em}
+</style></head><body>
+<div class="stage">
+
+  <header class="head">
+    <span class="num">07</span>
+    <span class="title">Buttons</span>
+    <span class="sub">3 variants · 4 states · 3 sizes</span>
+  </header>
+
+  <!-- ============ COLUMN 1 — variants × states ============ -->
+  <div class="block">
+    <div class="divlab"><span class="k">a</span>Primary <hr/><span>magenta · navy label</span></div>
+    <div class="row">
+      <button class="btn primary">Get in touch <span class="arrow">→</span></button>
+      <button class="btn primary press">Get in touch <span class="arrow">→</span></button>
+      <button class="btn primary dis" disabled>Get in touch <span class="arrow">→</span></button>
+    </div>
+    <div class="kv"><span><b>rest</b> hover · pressed · disabled</span></div>
+
+    <div class="divlab" style="margin-top:14px"><span class="k">b</span>Ghost <hr/><span>hairline · gold → magenta on hover</span></div>
+    <div class="row">
+      <button class="btn ghost">View work <span class="arrow">↓</span></button>
+      <button class="btn ghost press">View work <span class="arrow">↓</span></button>
+      <button class="btn ghost dis" disabled>View work <span class="arrow">↓</span></button>
+    </div>
+
+    <div class="divlab" style="margin-top:14px"><span class="k">c</span>Link <hr/><span>underline · wipes right-to-left</span></div>
+    <div class="row" style="gap:28px">
+      <a class="link" href="#">Read the paper <span class="arrow arrow-sm">→</span></a>
+      <a class="link" href="#" style="color:#F4D06F">See all projects <span class="arrow arrow-sm">→</span></a>
+    </div>
+  </div>
+
+  <!-- ============ COLUMN 2 — sizes + anatomy ============ -->
+  <div class="block">
+    <div class="divlab"><span class="k">d</span>Sizes <hr/><span>sm · md · lg</span></div>
+    <div class="stack">
+      <div class="row"><button class="btn primary sm">Small <span class="arrow">→</span></button><span class="lab">sm · 11 / 20·11</span></div>
+      <div class="row"><button class="btn primary md">Medium <span class="arrow">→</span></button><span class="lab">md · 13 / 28·16 — default</span></div>
+      <div class="row"><button class="btn primary lg">Large <span class="arrow">→</span></button><span class="lab">lg · 15 / 36·20</span></div>
+    </div>
+
+    <div class="divlab" style="margin-top:14px"><span class="k">e</span>Anatomy <hr/><span>weighty motion · no glow</span></div>
+    <div class="kv" style="flex-direction:column;gap:6px;color:rgba(244,208,111,.6)">
+      <span><b>radius</b>   2px — sharp, editorial</span>
+      <span><b>border</b>   1px · same hue as fill</span>
+      <span><b>ease</b>   cubic-bezier(.2, .7, .2, 1) · 420ms</span>
+      <span><b>hover</b>   padding expands L+R by 8 · arrow +6px</span>
+      <span><b>press</b>   translateY(1) · fill darkens 20%</span>
+      <span><b>accent</b>   #FF2AC1 only — never paired with a second accent per element</span>
+    </div>
+  </div>
+
+  <!-- ============ FEATURE — oversized editorial CTA ============ -->
+  <div class="feature">
+    <button class="oversized">Let's build something<span class="chev">→</span></button>
+    <div class="notes">
+      <div class="n"><b>Use</b>Contact section · end-of-page</div>
+      <div class="n"><b>Type</b>DM Serif Display · 42 / 1.0</div>
+      <div class="n"><b>Motion</b>paddingL+R 40 → 56 · 500ms</div>
+    </div>
+  </div>
+
+</div>
+</body></html>

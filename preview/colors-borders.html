@@ -1,0 +1,90 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Colors — Borders</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:#0a0a0a;color:#ededed;font-family:var(--font-sans);overflow:hidden}
+  .stage{position:relative;height:100vh;min-height:280px;padding:26px 30px;display:flex;flex-direction:column;gap:18px}
+
+  .head{display:flex;align-items:baseline;gap:14px}
+  .head .num{font-family:var(--font-mono);font-size:10px;letter-spacing:.25em;color:#ff6ec7}
+  .head .title{font-family:var(--font-serif);font-size:24px;letter-spacing:-.02em;line-height:1}
+  .head .sub{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(237,237,237,.5);margin-left:auto}
+
+  /* 4 specimens shown against a soft grid bg so the hairline weight is obvious */
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;flex:1}
+  .cell{position:relative;background:
+      linear-gradient(#141414,#141414) padding-box,
+      repeating-linear-gradient(45deg,rgba(255,255,255,.02) 0 6px,transparent 6px 12px) padding-box;
+    border-radius:10px;padding:14px;display:flex;flex-direction:column;justify-content:space-between;
+    overflow:hidden}
+
+  .specimen{display:flex;align-items:center;justify-content:center;flex:1;min-height:80px;position:relative}
+  .box{width:100%;height:70px;border-radius:8px;background:#0a0a0a;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;color:rgba(237,237,237,.4)}
+
+  .b1 .box{border:1px solid rgba(255,255,255,.06)}
+  .b2 .box{border:1px solid rgba(255,110,199,.3)}
+  .b3 .box{background:linear-gradient(#0a0a0a,#0a0a0a) padding-box,linear-gradient(135deg,#ff2d9c,#ffc65c 50%,#5ee1ff) border-box;border:1px solid transparent}
+  .b4 .box{border:1px dashed rgba(255,255,255,.18)}
+
+  /* top-left corner tag */
+  .tag{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+  .tag .dot{width:6px;height:6px;border-radius:50%;background:#ff6ec7;box-shadow:0 0 0 3px rgba(255,110,199,.15)}
+  .tag .role{font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:rgba(237,237,237,.55);font-weight:500}
+
+  .meta{display:flex;justify-content:space-between;align-items:flex-end;font-family:var(--font-mono);font-size:9px;color:rgba(237,237,237,.4);letter-spacing:.05em;margin-top:8px}
+  .meta .name{color:#ededed;font-weight:500}
+
+  /* footer */
+  .foot{display:flex;justify-content:space-between;align-items:center;
+    font-family:var(--font-mono);font-size:9.5px;letter-spacing:.1em;color:rgba(237,237,237,.35)}
+</style></head><body>
+<div class="stage">
+
+  <div class="head">
+    <span class="num">03</span>
+    <span class="title">Borders & hairlines</span>
+    <span class="sub">4 specimens · 1px all-round</span>
+  </div>
+
+  <div class="grid">
+
+    <div class="cell b1">
+      <div>
+        <div class="tag"><span class="dot" style="background:rgba(255,255,255,.3);box-shadow:0 0 0 3px rgba(255,255,255,.05)"></span><span class="role">Rest</span></div>
+        <div class="specimen"><div class="box">rest · 06%</div></div>
+      </div>
+      <div class="meta"><span class="name">--border</span><span>rgba 255·255·255 / .06</span></div>
+    </div>
+
+    <div class="cell b2">
+      <div>
+        <div class="tag"><span class="dot"></span><span class="role">Hover · Active</span></div>
+        <div class="specimen"><div class="box">hover · 30%</div></div>
+      </div>
+      <div class="meta"><span class="name">--border-hover</span><span>rgba 255·110·199 / .30</span></div>
+    </div>
+
+    <div class="cell b3">
+      <div>
+        <div class="tag"><span class="dot" style="background:linear-gradient(135deg,#ff2d9c,#5ee1ff)"></span><span class="role">Signature · Feature</span></div>
+        <div class="specimen"><div class="box">miami gradient</div></div>
+      </div>
+      <div class="meta"><span class="name">--border-grad</span><span>#ff2d9c → #ffc65c → #5ee1ff</span></div>
+    </div>
+
+    <div class="cell b4">
+      <div>
+        <div class="tag"><span class="dot" style="background:rgba(255,255,255,.4);box-shadow:0 0 0 3px rgba(255,255,255,.05)"></span><span class="role">Dashed · Placeholder</span></div>
+        <div class="specimen"><div class="box">placeholder</div></div>
+      </div>
+      <div class="meta"><span class="name">--border-dashed</span><span>1px dashed · 18%</span></div>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    <span>inset 0 0 0 1px · always 1px · never heavier</span>
+    <span>radius 6 – 10</span>
+  </div>
+
+</div>
+</body></html>

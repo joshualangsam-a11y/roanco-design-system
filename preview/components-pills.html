@@ -1,0 +1,256 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Pills</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{background:var(--bg);color:var(--text);font-family:var(--font-sans);margin:0;-webkit-font-smoothing:antialiased}
+  *{box-sizing:border-box}
+
+  .sheet{padding:26px 30px 32px;position:relative}
+  .sheet::before,.sheet::after{content:"";position:absolute;left:30px;right:30px;height:1px;background:rgba(157,180,216,.14)}
+  .sheet::before{top:0}.sheet::after{bottom:0}
+
+  /* Specimen header */
+  .hdr{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:baseline;padding-top:4px;padding-bottom:22px}
+  .hdr .id{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(157,180,216,.55)}
+  .hdr .id b{color:#F4D06F;font-weight:500}
+  .hdr .title{font-family:var(--font-serif);font-size:22px;letter-spacing:-.015em;color:#F4D06F;line-height:1}
+  .hdr .title em{font-style:italic;color:#FF6FB5}
+  .hdr .meta{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(157,180,216,.45);text-align:right}
+  .hdr .meta b{color:#09FBD3;font-weight:400}
+
+  /* 4-column specimen grid */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid rgba(157,180,216,.12)}
+  .cell{padding:22px 24px;border-right:1px solid rgba(157,180,216,.1);border-bottom:1px solid rgba(157,180,216,.1);min-height:140px;display:flex;flex-direction:column;gap:14px;position:relative}
+  .cell:nth-child(2n){border-right:none}
+  .cell:nth-last-child(-n+2){border-bottom:none}
+
+  .cell .lbl{display:flex;align-items:baseline;gap:10px;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(9,251,211,.65)}
+  .cell .lbl .n{color:rgba(255,42,193,.55);letter-spacing:.14em}
+  .cell .lbl .desc{color:rgba(157,180,216,.5);font-size:9px;letter-spacing:.14em;margin-left:auto}
+
+  .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+
+  /* --- UNIFIED PILL SYSTEM ------------------------------------------------ */
+  /* base metrics: 28px height, 11px text, consistent radius per family */
+
+  /* a. Tech tag — quiet, inside cards */
+  .tag{display:inline-flex;align-items:center;height:26px;padding:0 11px;font-size:10.5px;letter-spacing:.02em;
+    color:rgba(157,180,216,.7);border:1px solid rgba(157,180,216,.14);background:rgba(255,255,255,.01);
+    transition:all .2s;cursor:default}
+  .tag:hover{border-color:rgba(9,251,211,.4);color:#F4D06F;background:rgba(9,251,211,.04)}
+  .tag.primary{color:#F4D06F;border-color:rgba(244,208,111,.3)}
+
+  /* b. Stack chip — capability, About section */
+  .stack{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 14px;font-size:11.5px;letter-spacing:-.005em;
+    color:rgba(157,180,216,.75);border:1px solid rgba(157,180,216,.16);
+    transition:all .2s;cursor:default}
+  .stack::before{content:"";width:4px;height:4px;background:rgba(255,42,193,.55);transform:rotate(45deg);flex:none}
+  .stack:hover{border-color:#FF2AC1;color:#FF6FB5}
+  .stack:hover::before{background:#09FBD3}
+  .stack.accent{color:#F4D06F;border-color:rgba(244,208,111,.28)}
+  .stack.accent::before{background:#F4D06F}
+
+  /* c. Status — live/building/idle */
+  .status{display:inline-flex;align-items:center;gap:9px;height:26px;padding:0 12px;border-radius:999px;
+    font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+    color:rgba(157,180,216,.7);border:1px solid rgba(157,180,216,.16)}
+  .status .dot{width:6px;height:6px;border-radius:50%;background:#09FBD3;box-shadow:0 0 8px rgba(9,251,211,.55);flex:none;animation:rk-pulse 2.2s ease-in-out infinite}
+  .status.warn .dot{background:#FF2AC1;box-shadow:0 0 8px rgba(255,42,193,.6)}
+  .status.warn{color:#FF6FB5;border-color:rgba(255,42,193,.3)}
+  .status.idle .dot{background:rgba(91,14,110,.9);box-shadow:none;animation:none}
+  .status.idle{color:rgba(157,180,216,.4);border-color:rgba(157,180,216,.12)}
+  @keyframes rk-pulse{0%,100%{opacity:1}50%{opacity:.5}}
+
+  /* d. Metric — mono chip */
+  .metric{display:inline-flex;align-items:center;gap:8px;height:26px;padding:0 12px;
+    font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;color:rgba(244,208,111,.9);
+    border:1px dashed rgba(244,208,111,.3);background:rgba(244,208,111,.03)}
+  .metric .k{color:rgba(9,251,211,.7);font-size:9px;letter-spacing:.22em;text-transform:uppercase}
+  .metric .v{color:#F4D06F}
+  .metric.hot{color:#FF6FB5;border-color:rgba(255,42,193,.3);background:rgba(255,42,193,.04)}
+  .metric.hot .v{color:#FF6FB5}
+
+  /* e. Category label — eyebrow only (no border) */
+  .cat{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(157,180,216,.65);padding:0 4px;height:26px}
+  .cat::before{content:"§";color:rgba(255,42,193,.55);margin-right:2px}
+  .cat.hot{color:#FF6FB5}
+  .cat.hot::before{color:#FF6FB5}
+  .cat.alt{color:#09FBD3}
+  .cat.alt::before{color:#09FBD3}
+
+  /* f. Nav link */
+  .navlink{display:inline-flex;align-items:baseline;gap:8px;height:28px;padding:0 12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(157,180,216,.7);border:1px solid rgba(157,180,216,.14);cursor:pointer;transition:all .2s}
+  .navlink .n{font-family:var(--font-mono);font-size:9px;color:rgba(255,42,193,.5)}
+  .navlink:hover{color:#F4D06F;border-color:#FF2AC1}
+  .navlink:hover .n{color:#09FBD3}
+  .navlink.active{color:#F4D06F;border-color:rgba(244,208,111,.35);background:rgba(244,208,111,.04)}
+  .navlink.active .n{color:#FF6FB5}
+
+  /* g. CTA buttons (primary, secondary, link) */
+  .btn{display:inline-flex;align-items:center;gap:10px;height:34px;padding:0 16px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#F4D06F;border:1px solid rgba(244,208,111,.35);cursor:pointer;transition:all .2s;background:transparent}
+  .btn:hover{border-color:#FF2AC1;color:#FF6FB5;transform:translateY(-1px)}
+  .btn.solid{background:#FF2AC1;color:#0B132B;border-color:#FF2AC1;font-weight:500}
+  .btn.solid:hover{background:#FF6FB5;border-color:#FF6FB5;color:#0B132B}
+  .btn.ghost{border-color:rgba(157,180,216,.2);color:rgba(157,180,216,.75)}
+  .btn.ghost:hover{border-color:#F4D06F;color:#F4D06F}
+  .btn .ar{transition:transform .2s}
+  .btn:hover .ar{transform:translateX(3px)}
+
+  .linkchip{display:inline-flex;align-items:center;gap:10px;height:28px;padding:0 13px;font-size:11px;color:rgba(157,180,216,.7);border:1px solid rgba(157,180,216,.14);cursor:pointer;transition:all .2s}
+  .linkchip:hover{color:#09FBD3;border-color:rgba(9,251,211,.4)}
+  .linkchip .url{font-family:var(--font-mono);font-size:10.5px;color:inherit}
+  .linkchip svg{color:#FF2AC1;flex:none;transition:transform .2s}
+  .linkchip:hover svg{transform:translate(2px,-2px);color:#09FBD3}
+
+  /* h. Filter toggle */
+  .filter{display:inline-flex;align-items:center;gap:8px;height:26px;padding:0 13px;border-radius:999px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(157,180,216,.55);border:1px solid transparent;cursor:pointer;transition:all .2s}
+  .filter:hover{color:#F4D06F;background:rgba(157,180,216,.04)}
+  .filter.on{background:rgba(255,42,193,.1);border-color:rgba(255,42,193,.4);color:#FF6FB5}
+  .filter .ct{font-family:var(--font-mono);font-size:9px;color:rgba(157,180,216,.35);letter-spacing:.1em}
+  .filter.on .ct{color:rgba(255,111,181,.65)}
+
+  /* i. Version / build badge */
+  .badge{display:inline-flex;align-items:center;gap:8px;height:22px;padding:0 10px;font-family:var(--font-mono);font-size:10px;color:rgba(157,180,216,.7);border:1px solid rgba(157,180,216,.12);background:rgba(255,255,255,.015)}
+  .badge .k{color:rgba(9,251,211,.7);font-size:9px;letter-spacing:.22em;text-transform:uppercase}
+  .badge .v{color:#F4D06F;letter-spacing:.04em}
+
+  /* j. Sizes showcase */
+  .sizes{display:flex;align-items:center;gap:10px}
+  .tag.xs{height:20px;padding:0 8px;font-size:9.5px}
+  .tag.md{height:26px}
+  .tag.lg{height:34px;padding:0 14px;font-size:12px}
+
+  /* Footer attribution */
+  .foot{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:baseline;padding-top:20px;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(157,180,216,.45)}
+  .foot b{color:#F4D06F;font-weight:400}
+  .foot .dot{width:5px;height:5px;background:#FF2AC1;display:inline-block;margin:0 8px;transform:translateY(-1px)}
+</style></head><body>
+<div class="sheet">
+
+  <div class="hdr">
+    <span class="id"><b>04</b> · Pill system</span>
+    <span class="title">Ten chip families, <em>one grammar</em></span>
+    <span class="meta"><b>RoanCo</b> · v2.4 · 10 variants</span>
+  </div>
+
+  <div class="grid">
+
+    <!-- a. TECH TAG -->
+    <div class="cell">
+      <div class="lbl"><span class="n">a.</span>Tech tag<span class="desc">card · inline · 26h</span></div>
+      <div class="row">
+        <span class="tag primary">Elixir</span><span class="tag">Phoenix</span><span class="tag">Claude API</span>
+        <span class="tag">PostgreSQL</span><span class="tag">Next.js</span><span class="tag">TypeScript</span>
+        <span class="tag">Stripe</span><span class="tag">FFmpeg</span>
+      </div>
+      <div class="sizes">
+        <span class="tag xs">xs · 20h</span>
+        <span class="tag md">md · 26h</span>
+        <span class="tag lg">lg · 34h</span>
+      </div>
+    </div>
+
+    <!-- b. STACK CHIP -->
+    <div class="cell">
+      <div class="lbl"><span class="n">b.</span>Stack chip<span class="desc">about · capability · 32h</span></div>
+      <div class="row">
+        <span class="stack accent">Elixir / Phoenix</span>
+        <span class="stack">TypeScript</span>
+        <span class="stack">Next.js / React</span>
+        <span class="stack">Python / FastAPI</span>
+        <span class="stack">Tailwind</span>
+        <span class="stack">Fly.io</span>
+      </div>
+    </div>
+
+    <!-- c. STATUS -->
+    <div class="cell">
+      <div class="lbl"><span class="n">c.</span>Status<span class="desc">live · shipping · archived</span></div>
+      <div class="row">
+        <span class="status"><span class="dot"></span>Live · 469 tests</span>
+        <span class="status warn"><span class="dot"></span>Shipping v2.4</span>
+        <span class="status idle"><span class="dot"></span>Archived</span>
+      </div>
+      <div class="row" style="margin-top:2px">
+        <span class="status"><span class="dot"></span>Available Q3</span>
+        <span class="status warn"><span class="dot"></span>2 open roles</span>
+      </div>
+    </div>
+
+    <!-- d. METRIC -->
+    <div class="cell">
+      <div class="lbl"><span class="n">d.</span>Metric<span class="desc">mono · k/v · dashed</span></div>
+      <div class="row">
+        <span class="metric"><span class="k">agents</span><span class="v">47</span></span>
+        <span class="metric"><span class="k">products</span><span class="v">15</span></span>
+        <span class="metric hot"><span class="k">uptime</span><span class="v">99.97%</span></span>
+        <span class="metric"><span class="k">p95</span><span class="v">128ms</span></span>
+        <span class="metric hot"><span class="k">users</span><span class="v">2,847</span></span>
+      </div>
+    </div>
+
+    <!-- e. CATEGORY -->
+    <div class="cell">
+      <div class="lbl"><span class="n">e.</span>Category<span class="desc">eyebrow · no chrome</span></div>
+      <div class="row">
+        <span class="cat hot">Featured</span>
+        <span class="cat">Legal Tech</span>
+        <span class="cat alt">AI Orchestration</span>
+        <span class="cat">Dev Tools</span>
+        <span class="cat alt">Research</span>
+      </div>
+    </div>
+
+    <!-- f. NAV LINK -->
+    <div class="cell">
+      <div class="lbl"><span class="n">f.</span>Nav link<span class="desc">numbered · 28h</span></div>
+      <div class="row">
+        <span class="navlink active"><span class="n">01</span>Work</span>
+        <span class="navlink"><span class="n">02</span>About</span>
+        <span class="navlink"><span class="n">03</span>Research</span>
+        <span class="navlink"><span class="n">04</span>Writing</span>
+        <span class="navlink"><span class="n">05</span>Contact</span>
+      </div>
+    </div>
+
+    <!-- g. CTA -->
+    <div class="cell">
+      <div class="lbl"><span class="n">g.</span>CTA · Link<span class="desc">primary · ghost · linkchip</span></div>
+      <div class="row">
+        <span class="btn solid">Get in touch <span class="ar">→</span></span>
+        <span class="btn">View work <span class="ar">↓</span></span>
+        <span class="btn ghost">Read more</span>
+      </div>
+      <div class="row">
+        <span class="linkchip">
+          <span class="url">app.roanco.law</span>
+          <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="1.5"/></svg>
+        </span>
+        <span class="linkchip">
+          <span class="url">github.com/jlangsam</span>
+          <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="1.5"/></svg>
+        </span>
+      </div>
+    </div>
+
+    <!-- h. FILTER -->
+    <div class="cell">
+      <div class="lbl"><span class="n">h.</span>Filter<span class="desc">toggle · with count</span></div>
+      <div class="row">
+        <span class="filter on">All <span class="ct">15</span></span>
+        <span class="filter">Legal <span class="ct">4</span></span>
+        <span class="filter">AI <span class="ct">6</span></span>
+        <span class="filter">SaaS <span class="ct">3</span></span>
+        <span class="filter">Dev tools <span class="ct">2</span></span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    <span><b>Pill family</b> · 10 variants · shared metrics</span>
+    <span></span>
+    <span>RoanCo<span class="dot"></span>Joshua Langsam<span class="dot"></span>Specimen <b>04</b></span>
+  </div>
+
+</div>
+</body></html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Type — Display</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;overflow:hidden;background:#0B132B;color:#F4D06F;font-family:var(--font-sans);
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+
+  .sheet{position:relative;min-height:100vh;box-sizing:border-box;padding:32px 48px 24px;
+    display:grid;grid-template-rows:auto auto 1fr auto auto;gap:0}
+
+  .sheet::before{content:"";position:absolute;left:48px;right:48px;top:0;height:1px;background:rgba(157,180,216,.18)}
+  .sheet::after{content:"";position:absolute;left:48px;right:48px;bottom:0;height:1px;background:rgba(157,180,216,.18)}
+
+  /* HEADER */
+  .head{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:baseline;padding-top:10px}
+  .mark{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;color:rgba(157,180,216,.55);text-transform:uppercase}
+  .mark b{color:#F4D06F;font-weight:500}
+  .colo{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:rgba(157,180,216,.45);text-transform:uppercase;text-align:right}
+  .colo b{color:#F4D06F;font-weight:500;margin-right:6px}
+  .title{font-family:var(--font-serif);font-size:16px;letter-spacing:-.005em;color:#F4D06F;line-height:1;font-style:italic;justify-self:center}
+
+  /* SUBHEAD LOCKUP */
+  .lockup{display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;padding:14px 0 14px;margin-top:12px;border-bottom:1px solid rgba(157,180,216,.1)}
+  .lockup .mono{font-family:var(--font-mono);font-size:10px;letter-spacing:.22em;color:rgba(9,251,211,.7);text-transform:uppercase}
+  .lockup .bar{height:1px;background:linear-gradient(90deg, rgba(255,42,193,.5), transparent)}
+  .lockup .by{font-family:var(--font-serif);font-style:italic;font-size:15px;color:rgba(157,180,216,.6);letter-spacing:-.005em}
+  .lockup .by em{color:#FF6FB5;font-style:italic}
+
+  /* SPECIMEN */
+  .specimen{display:flex;flex-direction:column;justify-content:center;padding:28px 0 20px;gap:14px;position:relative}
+
+  .kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:.3em;color:rgba(9,251,211,.75);text-transform:uppercase;margin-bottom:6px}
+  .kicker .sep{color:rgba(255,42,193,.55);margin:0 10px}
+
+  /* Wordmark */
+  .brand{margin:0;font-family:var(--font-serif);font-weight:400;
+    font-size:clamp(128px,17vw,220px);line-height:.84;letter-spacing:-.045em;color:#F4D06F}
+  .brand em{font-style:italic;color:#FF6FB5}
+
+  /* The phrase — slogan */
+  .phrase{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:baseline;margin-top:10px}
+  .phrase .q{margin:0;font-family:var(--font-serif);font-weight:400;font-size:clamp(36px,5.4vw,64px);line-height:1;letter-spacing:-.022em;color:#F4D06F}
+  .phrase .q .lq,.phrase .q .rq{color:rgba(255,111,181,.55);font-style:italic;margin:0 .02em}
+  .phrase .q em{font-style:italic;color:#FF6FB5}
+  .phrase .rule{height:1px;background:rgba(157,180,216,.18)}
+  .phrase .meta{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:rgba(157,180,216,.5);text-align:right;line-height:1.7;text-transform:uppercase}
+  .phrase .meta b{color:#F4D06F;font-weight:400;display:block}
+
+  /* Byline */
+  .by-row{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:baseline;padding:14px 0 0;margin-top:14px;border-top:1px solid rgba(157,180,216,.1)}
+  .by-row .mono{font-family:var(--font-mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(9,251,211,.7)}
+  .by-row .name{font-family:var(--font-serif);font-size:22px;color:#F4D06F;letter-spacing:-.015em;font-weight:400}
+  .by-row .name em{font-style:italic;color:#FF6FB5}
+  .by-row .sig{font-family:var(--font-serif);font-style:italic;font-size:15px;color:rgba(157,180,216,.55);text-align:right}
+
+  /* FOOTER */
+  .foot{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:14px 0 8px;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(157,180,216,.5);line-height:1.5}
+  .foot .k{color:rgba(9,251,211,.7);display:block;font-size:9px;margin-bottom:3px;letter-spacing:.24em}
+  .foot b{color:#F4D06F;font-weight:400}
+</style></head><body>
+<div class="sheet">
+
+  <div class="head">
+    <span class="mark"><b>02a</b> · Display Serif</span>
+    <span class="title">Type specimen</span>
+    <span class="colo"><b>RoanCo</b>Jupiter, FL · 2026</span>
+  </div>
+
+  <div class="lockup">
+    <span class="mono">§ Wordmark · Manifesto</span>
+    <span class="bar"></span>
+    <span class="by">Designed <em>&amp;</em> built by its author</span>
+  </div>
+
+  <div class="specimen">
+    <div class="kicker">
+      Display 220 <span class="sep">·</span> DM Serif Display · Regular
+      <span class="sep">·</span> Manifesto 64
+    </div>
+
+    <h1 class="brand">RoanCo</h1>
+
+    <div class="phrase">
+      <h2 class="q"><span class="lq">“</span>It's not <em>if</em>, it's <em>when</em>.<span class="rq">”</span></h2>
+      <span class="rule"></span>
+      <span class="meta"><b>64 / 1.0</b>−0.022em</span>
+    </div>
+
+    <div class="by-row">
+      <span class="mono">§ Author</span>
+      <span class="name">Joshua <em>Langsam</em></span>
+      <span class="sig">— CTO, <em>RoanCo</em></span>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span><span class="k">Wordmark</span><b>220 px</b> · −0.045em · lh 0.84</span>
+    <span><span class="k">Manifesto</span><b>64 px</b> · −0.022em · lh 1.0</span>
+    <span><span class="k">Italic accent</span>on <b>if</b>, <b>when</b>, <b>Langsam</b></span>
+    <span><span class="k">Pairing</span>DM Serif + JetBrains Mono</span>
+  </div>
+
+</div>
+</body></html>
