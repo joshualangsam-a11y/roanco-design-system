@@ -139,107 +139,69 @@ window.Services = function Services() {
   );
 };
 
-/* ========== WHAT WE BUILD — AGENTIC CONSULTING DEEP DIVE ========== */
-const BUILDS = [
-  { name:"AI Case Management", client:"PI Law Firms", color:"var(--accent)",
-    description:"Full AI case management system for personal injury law firms. Document analysis, demand letter generation, medical record parsing, automated client intake. Replaced 4 hours/week of paperwork with 30 minutes.",
-    tech:["Document AI","Automated intake","Smart billing"], metric:"87% time saved" },
-  { name:"Tax Automation Engine", client:"CPA Firm · Boca Raton", color:"var(--gold)",
-    description:"AI-assisted tax preparation system for a CPA firm. Cloud database migration, embedded AI chatbot for client queries, automated data extraction from receipts and statements, and a full security audit of their legacy system.",
-    tech:["Anthropic API","Data extraction","Security audit"], metric:"Shipping now" },
-  { name:"eCommerce Agent", client:"Retail · Ohio", color:"var(--data)",
-    description:"Fully automated eCommerce agent. End-to-end from listing generation to fulfillment routing. The system handles product descriptions, pricing optimization, inventory sync, and order management — no human in the loop.",
-    tech:["Multi-agent","Auto-fulfillment","Listing AI"], metric:"4-week build" },
-  { name:"Custom CRM & Pipeline", client:"Wholesale Distribution", color:"var(--accent)",
-    description:"Custom CRM built for wholesale distribution operations. Route planning, order state tracking, pipeline management, and automated follow-ups. Replaced spreadsheets and sticky notes with a system that actually works.",
-    tech:["Custom CRM","Route planning","Pipeline tracking"], metric:"Internal tool" },
-];
-
+/* ========== WHAT WE BUILD ========== */
 window.OurWork = function OurWork() {
+  var builds = [
+    { name:"AI Case Management", client:"PI Law Firms", color:"var(--accent)",
+      desc:"Full AI case management for personal injury firms. Document analysis, demand letters, medical record parsing, automated client intake. Replaced 4 hours/week of paperwork with 30 minutes.",
+      tech:["Document AI","Automated intake","Smart billing"], metric:"87% time saved" },
+    { name:"Tax Automation Engine", client:"CPA Firm", color:"var(--gold)",
+      desc:"AI-assisted tax prep for a CPA firm. Cloud DB migration, embedded AI chatbot, automated data extraction from receipts and statements, full security audit of legacy system.",
+      tech:["Anthropic API","Data extraction","Security audit"], metric:"Shipping now" },
+    { name:"eCommerce Agent", client:"Retail", color:"var(--data)",
+      desc:"Fully automated eCommerce agent. End-to-end from listing generation to fulfillment routing. Product descriptions, pricing optimization, inventory sync, order management.",
+      tech:["Multi-agent","Auto-fulfillment","Listing AI"], metric:"4-week build" },
+    { name:"Custom CRM", client:"Wholesale Distribution", color:"var(--accent)",
+      desc:"Custom CRM for wholesale distribution. Route planning, order tracking, pipeline management, automated follow-ups. Replaced spreadsheets with a system that works.",
+      tech:["Custom CRM","Route planning","Pipeline tracking"], metric:"Internal tool" },
+  ];
+  var trust = [
+    "Every system we build, we use ourselves first",
+    "Phase 1 consulting proves value before you commit",
+    "Cybersecurity baked in, not bolted on",
+    "We stay embedded as partners, not vendors"
+  ];
   return (
     <section id="our-work" style={{ position:"relative", padding:"144px clamp(24px,5vw,96px)" }}>
       <div style={{ margin:"0 auto", maxWidth:1200 }}>
-        <window.SectionHeader num="02" eyebrow="Our Work" title="What we've built." topLine={true}
-          sub="Real systems for real businesses. Every engagement starts with consulting and ends with a deployed system that runs on its own." />
-
-        {/* Trust bar */}
+        <window.SectionHeader num="02" eyebrow="Our Work" title="What we have built." topLine={true}
+          sub="Real systems for real businesses. Every engagement starts with consulting and ends with a deployed system." />
         <window.FadeIn delay={.1}>
-          <div style={{ marginTop:40, background:"var(--bg-elevated)", border:"1px solid var(--border)", borderRadius:8, padding:"28px 36px", display:"flex", flexWrap:"wrap", gap:40, alignItems:"center" }}>
-            <div style={{ display:"flex", alignItems:"center", gap:12 }}>
+          <div style={{ marginTop:40, background:"var(--bg-elevated)", border:"1px solid var(--border)", borderRadius:8, padding:"28px 36px" }}>
+            <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:20 }}>
               <div style={{ height:1, width:20, background:"rgba(255,42,193,.4)" }} />
               <span style={{ fontSize:10, letterSpacing:".25em", textTransform:"uppercase", color:"var(--text-muted)" }}>Why trust us</span>
             </div>
-            {[
-              "Every system we build, we use ourselves first",
-              "Phase 1 consulting proves value before you commit to Phase 2",
-              "Cybersecurity is baked in — not bolted on",
-              "We stay embedded as partners, not vendors",
-            ].map(item => (
-              <span key={item} style={{ fontSize:12, color:"rgba(245,239,224,.5)", display:"flex", alignItems:"center", gap:8 }}>
-                <span style={{ color:"var(--accent)", fontSize:13 }}>✓</span> {item}
-              </span>
-            ))}
+            <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:12 }}>
+              {trust.map(function(item) { return (
+                <div key={item} style={{ display:"flex", alignItems:"flex-start", gap:10 }}>
+                  <span style={{ color:"var(--accent)", fontSize:13, flexShrink:0, marginTop:1 }}>✓</span>
+                  <span style={{ fontSize:13, color:"rgba(245,239,224,.55)", lineHeight:1.5 }}>{item}</span>
+                </div>
+              ); })}
+            </div>
           </div>
         </window.FadeIn>
-
-        {/* Featured build */}
-        <div style={{ marginTop:48 }}>
-          <window.FadeIn delay={.15}>
-            <div style={{ background:"var(--bg-elevated)", border:"1px solid var(--border)", borderRadius:8, padding:"48px 44px", transition:"border-color .4s" }}
-              onMouseEnter={e=>e.currentTarget.style.borderColor="var(--border-hover)"} onMouseLeave={e=>e.currentTarget.style.borderColor="var(--border)"}>
-              <div style={{ display:"grid", gridTemplateColumns:"3fr 2fr", gap:48 }}>
-                <div>
-                  <div style={{ display:"flex", gap:12, marginBottom:16 }}>
-                    <span style={{ fontSize:10, letterSpacing:".2em", textTransform:"uppercase", color:"var(--accent)", fontWeight:500 }}>Featured</span>
-                    <span style={{ fontSize:10, letterSpacing:".2em", textTransform:"uppercase", color:"rgba(157,180,216,.4)" }}>{BUILDS[0].client}</span>
-                  </div>
-                  <h3 style={{ fontFamily:"var(--font-serif)", fontWeight:400, fontSize:32, letterSpacing:"-.01em", margin:0, color:"var(--cream)" }}>{BUILDS[0].name}</h3>
-                  <p style={{ marginTop:16, fontSize:15, lineHeight:1.8, color:"var(--text-muted)", maxWidth:480 }}>{BUILDS[0].description}</p>
-                  <div style={{ marginTop:24, display:"flex", flexWrap:"wrap", gap:8 }}>
-                    {BUILDS[0].tech.map(t => (
-                      <span key={t} style={{ fontSize:10, color:"rgba(157,180,216,.5)", border:"1px solid var(--border)", padding:"4px 12px", borderRadius:6 }}>{t}</span>
-                    ))}
-                  </div>
-                  <div style={{ marginTop:24 }}>
-                    <span style={{ fontFamily:"var(--font-mono)", fontSize:13, color:"var(--accent)" }}>{BUILDS[0].metric}</span>
-                  </div>
-                </div>
-                <div style={{ display:"flex", alignItems:"center" }}>
-                  <div style={{ width:"100%", aspectRatio:"4/3", borderRadius:8, background:"var(--bg)", border:"1px solid rgba(255,255,255,.04)", display:"flex", alignItems:"center", justifyContent:"center" }}>
-                    <div style={{ textAlign:"center" }}>
-                      <span style={{ fontFamily:"var(--font-serif)", fontSize:48, color:"var(--accent)", fontStyle:"italic", opacity:.3 }}>01</span>
-                      <span style={{ display:"block", marginTop:8, fontFamily:"var(--font-mono)", fontSize:11, color:"rgba(157,180,216,.3)" }}>agentic system</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </window.FadeIn>
-        </div>
-
-        {/* Other builds — grid */}
-        <div style={{ marginTop:20, display:"grid", gridTemplateColumns:"repeat(3, 1fr)", gap:20 }}>
-          {BUILDS.slice(1).map((b, i) => (
-            <window.FadeIn key={b.name} delay={.2 + i * .08}>
+        <div style={{ marginTop:20, display:"grid", gridTemplateColumns:"1fr 1fr", gap:20 }}>
+          {builds.map(function(b, i) { return (
+            <window.FadeIn key={b.name} delay={.15 + i * .08}>
               <div style={{ background:"var(--bg-elevated)", border:"1px solid var(--border)", borderRadius:8, padding:"32px 28px", height:"100%", display:"flex", flexDirection:"column", transition:"border-color .4s, transform .4s" }}
-                onMouseEnter={e=>{ e.currentTarget.style.borderColor="var(--border-hover)"; e.currentTarget.style.transform="translateY(-3px)"; }}
-                onMouseLeave={e=>{ e.currentTarget.style.borderColor="var(--border)"; e.currentTarget.style.transform="translateY(0)"; }}>
+                onMouseEnter={function(e){ e.currentTarget.style.borderColor="var(--border-hover)"; e.currentTarget.style.transform="translateY(-3px)"; }}
+                onMouseLeave={function(e){ e.currentTarget.style.borderColor="var(--border)"; e.currentTarget.style.transform="translateY(0)"; }}>
                 <div style={{ display:"flex", justifyContent:"space-between", marginBottom:14 }}>
                   <span style={{ fontSize:10, letterSpacing:".2em", textTransform:"uppercase", color:b.color, fontWeight:500 }}>{b.client}</span>
-                </div>
-                <h3 style={{ fontFamily:"var(--font-serif)", fontWeight:400, fontSize:20, margin:0, color:"var(--cream)", letterSpacing:"-.01em" }}>{b.name}</h3>
-                <p style={{ marginTop:14, fontSize:13, lineHeight:1.75, color:"var(--text-muted)", flex:1 }}>{b.description}</p>
-                <div style={{ marginTop:20, paddingTop:16, borderTop:"1px solid var(--border)", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
-                  <div style={{ display:"flex", flexWrap:"wrap", gap:6 }}>
-                    {b.tech.map(t => (
-                      <span key={t} style={{ fontSize:10, color:"rgba(157,180,216,.4)", border:"1px solid var(--border)", padding:"3px 10px", borderRadius:6 }}>{t}</span>
-                    ))}
-                  </div>
                   <span style={{ fontFamily:"var(--font-mono)", fontSize:11, color:b.color }}>{b.metric}</span>
+                </div>
+                <h3 style={{ fontFamily:"var(--font-serif)", fontWeight:400, fontSize:22, margin:0, color:"var(--cream)", letterSpacing:"-.01em" }}>{b.name}</h3>
+                <p style={{ marginTop:14, fontSize:13, lineHeight:1.75, color:"var(--text-muted)", flex:1 }}>{b.desc}</p>
+                <div style={{ marginTop:20, paddingTop:16, borderTop:"1px solid var(--border)", display:"flex", flexWrap:"wrap", gap:6 }}>
+                  {b.tech.map(function(t) { return (
+                    <span key={t} style={{ fontSize:10, color:"rgba(157,180,216,.4)", border:"1px solid var(--border)", padding:"3px 10px", borderRadius:6 }}>{t}</span>
+                  ); })}
                 </div>
               </div>
             </window.FadeIn>
-          ))}
+          ); })}
         </div>
       </div>
     </section>
